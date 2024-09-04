@@ -1,0 +1,6 @@
+numpy
+scikit-learn
+pandas
+matplotlib
+seaborn
+ipykernel # para jupyters con vscode
