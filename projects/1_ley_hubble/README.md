@@ -1,68 +1,63 @@
 # Proyecto 1: Ley de Hubble
-Para comenzar a trabajr con modelos simples, vamos a partir con una regresión lineal y luego implementar otros modelos que veamos convenientes,
 
-Estos son datos simulados por lo que es bueno para comenzar a trabajar, obtener resultados esperados y saltarse un poco la limpieza de datos que puede resultar más complicada que el mismo machine 
+## Descripción
+En este proyecto, utilizamos un modelo de **regresión lineal** para explorar la **Ley de Hubble**, que describe la relación entre la distancia a una galaxia y su velocidad de recesión. El objetivo es estimar la **constante de Hubble** a partir de datos simulados de supernovas tipo Ia, que nos permitirán calcular las distancias y las velocidades de recesión de galaxias.
 
-Origen del dataset: (Kaggle Ley Hubble)[https://www.kaggle.com/datasets/austinhinkel/hubble-law-astronomy-lab/data]
+Trabajamos con un **dataset simulado** que nos permite obtener resultados esperados sin necesidad de una limpieza exhaustiva de datos, enfocándonos en el análisis y la construcción del modelo.
 
-# La Ley de Hubble
+Origen del dataset: [Kaggle: Ley de Hubble](https://www.kaggle.com/datasets/austinhinkel/hubble-law-astronomy-lab/data)
 
-La *Ley de Hubble* es una de las piezas fundamentales en la cosmología moderna, ya que describe la expansión del universo. La ley, propuesta por el astrónomo Edwin Hubble en 1929, establece una relación directa entre la **distancia a una galaxia** y la **velocidad a la que se aleja de nosotros** (debido a la expansión del universo). Esta relación se expresa matemáticamente como:
+## La Ley de Hubble
+
+La **Ley de Hubble** es un concepto clave en la cosmología moderna, ya que establece que las galaxias se alejan de nosotros a una velocidad proporcional a su distancia. Esta relación se expresa como:
 
 $$
 v = H_0 \cdot d
 $$
 
 Donde:
-- **$v$** es la **velocidad** a la que la galaxia se aleja de la Tierra (generalmente medida en km/s).
+- **$v$** es la **velocidad de recesión** (en km/s).
 - **$d$** es la **distancia** a la galaxia (en megaparsecs, Mpc).
-- **$H_0$** es la **constante de Hubble**, que mide la tasa de expansión del universo en unidades de km/s por Mpc.
+- **$H_0$** es la **constante de Hubble**, que mide la tasa de expansión del universo en km/s/Mpc.
 
-## Explicación conceptual
+Esta ley es fundamental para entender la expansión del universo y se basa en el **corrimiento al rojo** ("redshift") de la luz emitida por galaxias distantes.
 
-La Ley de Hubble nos dice que las galaxias que están más lejos de nosotros se alejan a mayor velocidad. Esto implica que el universo está en expansión, un concepto clave para la teoría del Big Bang. Hubble descubrió esta relación observando el **corrimiento al rojo** ("redshift") en la luz de galaxias lejanas. Este corrimiento al rojo indica que la longitud de onda de la luz emitida por un objeto se alarga, lo que significa que el objeto se está alejando de nosotros.
+## Metodología
 
-## ¿Cómo se determina la Ley de Hubble?
+### 1. Cálculo de la Distancia
+Las supernovas tipo Ia son utilizadas como **velas estándar** debido a su magnitud absoluta constante. La distancia a una galaxia puede calcularse utilizando la magnitud aparente ($m$) observada y la magnitud absoluta ($M$) de estas supernovas, con la fórmula:
 
-Para determinar la Ley de Hubble, necesitamos conocer dos cosas:
+$$
+d = 10^{\frac{m - M + 5}{5}}
+$$
 
-1. **La velocidad de recesión de la galaxia**: Se determina a partir de su **redshift**. El redshift ($z$) es una medida de cómo ha cambiado la longitud de onda de la luz emitida por la galaxia, y puede relacionarse directamente con la velocidad a la que se aleja de nosotros usando la fórmula aproximada para velocidades pequeñas:
+Donde $d$ es la distancia en parsecs.
 
-   $$
-   v = z \cdot c
-   $$
+### 2. Cálculo de la Velocidad de Recesión
+La **velocidad de recesión** de una galaxia se determina a partir de su **redshift** ($z$), utilizando la relación:
 
-   Donde:
-   - $v$ es la velocidad de recesión.
-   - $z$ es el redshift.
-   - $c$ es la velocidad de la luz (aproximadamente 300,000 km/s).
+$$
+v = z \cdot c
+$$
 
-2. **La distancia a la galaxia**: En este caso, la distancia se puede calcular usando el **brillo de supernovas de tipo Ia**. Estas supernovas son conocidas como "velas estándar" porque tienen una **magnitud absoluta** casi constante. Si conocemos la magnitud aparente ($m$) de la supernova y su magnitud absoluta ($M$), podemos calcular la distancia mediante la **ecuación de la distancia en astronomía**:
+Donde $c$ es la velocidad de la luz (300,000 km/s).
 
-   $$
-   m - M = 5 \log_{10}(d) - 5
-   $$
+### 3. Regresión Lineal
+Una vez calculadas las distancias y las velocidades, realizamos una **regresión lineal** entre ambas variables. La pendiente de esta regresión corresponde a la **constante de Hubble** ($H_0$).
 
-   Donde:
-   - $m$ es la **magnitud aparente** observada.
-   - $M$ es la **magnitud absoluta** conocida (para supernovas tipo Ia, $M \approx -19.3$).
-   - $d$ es la **distancia** a la galaxia en parsecs.
+## Implementación
 
-   Despejando para la distancia $d$:
+1. **Cargar y procesar los datos**: Se parte de un dataset con las magnitudes aparentes y los valores de redshift de las supernovas.
+2. **Transformación de los datos**: Convertimos la magnitud aparente en distancias y el redshift en velocidades.
+3. **Separación de datos**: Dividimos los datos en conjuntos de entrenamiento y prueba para evaluar el modelo.
+4. **Entrenamiento del modelo**: Utilizamos un modelo de **regresión lineal** para ajustar la relación entre la distancia y la velocidad de recesión.
+5. **Evaluación del modelo**: Calculamos métricas como el **Mean Squared Error (MSE)** y el **R²** para medir la calidad del modelo.
 
-   $$
-   d = 10^{\frac{m - M + 5}{5}}
-   $$
+## Ejecución del Proyecto
 
-## Inferencia de la Ley de Hubble a partir del dataset
+Sigue estos pasos para ejecutar el proyecto en tu entorno local:
 
-El dataset simulado que tienes contiene dos columnas importantes:
-1. **Magnitud aparente de las supernovas de tipo Ia**: Nos permitirá calcular la **distancia** a las galaxias utilizando la ecuación de la distancia mencionada anteriormente.
-2. **Valores de redshift**: Nos permitirá calcular la **velocidad** de recesión de las galaxias.
-
-### Procedimiento para inferir la Ley de Hubble:
-
-1. **Calcular la distancia**: Utiliza la magnitud aparente de cada supernova en el dataset y la magnitud absoluta típica para supernovas de tipo Ia ($M = -19.3$) para calcular la distancia a la galaxia anfitriona.
-2. **Calcular la velocidad de recesión**: Utiliza los valores de redshift ($z$) para calcular la velocidad a la que la galaxia se aleja de nosotros usando la fórmula $v = z \cdot c$.
-3. **Realizar una regresión lineal**: Una vez que tengas las distancias y las velocidades, puedes hacer una regresión lineal para obtener la relación entre ambas. La pendiente de esta regresión te dará una estimación de la **constante de Hubble** ($H_0$).
-
+1. Clona el repositorio.
+2. Instala las dependencias requeridas:
+   ```bash
+   pip install -r requirements.txt

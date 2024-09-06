@@ -4,3 +4,4 @@ pandas
 matplotlib
 seaborn
 ipykernel # para jupyters con vscode
+tqdm # barra de progreso
