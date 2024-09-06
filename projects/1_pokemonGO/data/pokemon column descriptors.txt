@@ -1,0 +1,26 @@
+Column Descriptors:
+
+- pokemon_id: Unique identifier for each Pokémon
+- pokemon_name: Name of the Pokémon
+- base_attack: Base attack stat of the Pokémon
+- base_defense: Base defense stat of the Pokémon
+- base_stamina: Base stamina (HP) stat of the Pokémon
+- type: Pokémon's type(s)
+- rarity: Rarity classification of the Pokémon
+- charged_moves: List of available charged moves for the Pokémon
+- fast_moves: List of available fast moves for the Pokémon
+- candy_required: Number of candies required for evolution
+- distance: Walking distance required for buddy candy
+- max_cp: Maximum Combat Power (CP) the Pokémon can achieve
+- attack_probability: Probability of the Pokémon attacking in battle
+- base_capture_rate: Base probability of capturing the Pokémon
+- base_flee_rate: Base probability of the Pokémon fleeing from encounter
+- dodge_probability: Probability of the Pokémon dodging in battle
+- max_pokemon_action_frequency: Maximum frequency of Pokémon actions in battle
+- min_pokemon_action_frequency: Minimum frequency of Pokémon actions in battle
+- found_egg: Boolean indicating if the Pokémon can be found in eggs
+- found_evolution: Boolean indicating if the Pokémon can be obtained through evolution
+- found_wild: Boolean indicating if the Pokémon can be found in the wild
+- found_research: Boolean indicating if the Pokémon can be obtained through research tasks
+- found_raid: Boolean indicating if the Pokémon can be encountered in raids
+- found_photobomb: Boolean indicating if the Pokémon can appear in photobombs
